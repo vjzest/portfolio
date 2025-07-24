@@ -29,7 +29,7 @@ export default function ProjectsSection() {
       title: "TeacherJob - Job Portal",
       description:
         "A dedicated job portal connecting teachers with educational institutions. Built with the MERN stack and utilizes AWS S3 for efficient resume and document storage.",
-      image: "/teacherjob.png",
+      image: "/Teacherjob.png",
       tech: ["React", "Node.js", "MongoDB", "AWS S3", "Express.js"],
       github: "https://github.com/vijay-cmtai/TeacherConnect2",
       demo: "https://www.teacherjob.in",
