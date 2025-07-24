@@ -29,7 +29,7 @@ export default function ProjectsSection() {
       title: "TeacherJob - Job Portal",
       description:
         "A dedicated job portal connecting teachers with educational institutions. Built with the MERN stack and utilizes AWS S3 for efficient resume and document storage.",
-      image: "/Teacherjob.png",
+      image: "/teacherjob.png",
       tech: ["React", "Node.js", "MongoDB", "AWS S3", "Express.js"],
       github: "https://github.com/vijay-cmtai/TeacherConnect2",
       demo: "https://www.teacherjob.in",
@@ -68,16 +68,22 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-24 px-4 bg-slate-900 text-white">
+    // Responsive padding: less on mobile, more on desktop
+    <section
+      id="projects"
+      className="py-16 md:py-24 px-4 bg-slate-900 text-white"
+    >
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
+          // Responsive margin: less on mobile, more on desktop
+          className="text-center mb-12 md:mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-br from-white to-gray-400 bg-clip-text text-transparent">
+          {/* Responsive font size: smaller on mobile, larger on desktop */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-br from-white to-gray-400 bg-clip-text text-transparent">
             Featured Projects
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-teal-500 mx-auto"></div>
@@ -88,28 +94,34 @@ export default function ProjectsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          // Responsive grid: 1 column on mobile, 2 on tablet, 3 on desktop
+          // Responsive gap: smaller gap on mobile, larger on desktop
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
           {projects.map((project) => (
             <motion.div
               key={project.title}
               variants={itemVariants}
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:-translate-y-2 group"
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:border-white/20 hover:shadow-2xl hover:-translate-y-2 group flex flex-col"
             >
-              <div className="relative h-56 w-full">
+              {/* Responsive image height */}
+              <div className="relative h-48 sm:h-56 w-full">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all"></div>
               </div>
-              <div className="p-6">
+              {/* flex-grow allows this content area to fill available space */}
+              <div className="p-4 md:p-6 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold text-white mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4 text-sm leading-relaxed h-20">
+                {/* REMOVED fixed height, added min-height for consistency */}
+                <p className="text-gray-400 mb-4 text-sm leading-relaxed min-h-[80px] flex-grow">
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -122,9 +134,10 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                 </div>
-                <div className="flex gap-4">
+                {/* Responsive button layout: stacked on mobile, side-by-side on larger screens */}
+                <div className="flex flex-col sm:flex-row gap-4 mt-auto">
                   <Button
-                    className="bg-gray-800/80 border border-gray-600/50 text-gray-200 hover:bg-gray-700/80 hover:border-gray-500 flex-1 transition-all duration-300"
+                    className="bg-gray-800/80 border border-gray-600/50 text-gray-200 hover:bg-gray-700/80 hover:border-gray-500 flex-1 transition-all duration-300 w-full sm:w-auto"
                     asChild
                   >
                     <a
@@ -136,7 +149,7 @@ export default function ProjectsSection() {
                     </a>
                   </Button>
                   <Button
-                    className="bg-gradient-to-r from-purple-600 to-cyan-500 text-white flex-1 hover:shadow-lg hover:shadow-cyan-500/40 transition-all duration-300"
+                    className="bg-gradient-to-r from-purple-600 to-cyan-500 text-white flex-1 hover:shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 w-full sm:w-auto"
                     asChild
                   >
                     <a
