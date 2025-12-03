@@ -8,6 +8,42 @@ import Image from "next/image";
 export default function ProjectsSection() {
   const projects = [
     {
+      title: "HousePlansfiles",
+      description:
+        "The HousePlansfiles website offers a vast collection of architectural house plans. Built with React and Node.js, it features a user-friendly interface and integrates with Contentful CMS for dynamic content management.",
+      image: "/houseplansfiles.png",
+      tech: ["React", "Node.js", "Express.js", "Contentful CMS"],
+      github: "https://github.com/vjzest/ArchitectFrontend",
+      demo: "https://architect-frontend-ruby.vercel.app",
+    },
+    {
+      title: "Rare Diamonds Marketplace",
+      description:
+        "A premium online marketplace for buying and selling rare diamonds. Developed using React and Node.js, it incorporates Contentful CMS for seamless content updates and management.",
+      image: "/Rarediamond.png",
+      tech: ["NextJs", "Node.js", "Express.js", "Contentful CMS"],
+      github: "https://github.com/vjzest/CraticFrontend",
+      demo: "https://cratic-frontend.vercel.app",
+    },
+    {
+      title: "Property Deals Platform",
+      description:
+        "A comprehensive platform for real estate transactions, allowing users to explore and manage property deals. Built with Next.js and Node.js, it leverages Contentful CMS for efficient content handling.",
+      image: "/property.png",
+      tech: ["NextJs", "Node.js", "Express.js", "Contentful CMS"],
+      github: "https://github.com/vijay-cmtai/investorFrontend",
+      demo: "https://investordeaa.vercel.app",
+    },
+    {
+      title: "Jwelen E-commerce Platform",
+      description:
+        "An elegant e-commerce website specializing in jewelry sales. Developed with Next.js and Node.js, it features a sleek design and utilizes Contentful CMS for dynamic product management.",
+      image: "/jwelen.png",
+      tech: ["NextJs", "Node.js", "Express.js", "Contentful CMS"],
+      github: "https://github.com/vijay-cmtai/Jewelen",
+      demo: "https://jewelencmtai.vercel.app",
+    },
+    {
       title: "E-commerce for Chia Seeds",
       description:
         "A niche e-commerce platform dedicated to selling chia seeds, built with a modern tech stack. Features product pages, a shopping cart, and uses Cloudinary for image management.",
