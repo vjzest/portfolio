@@ -1,10 +1,12 @@
+// src/app/components/Navbar.tsx
+
 "use client";
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Home, User, Code, Briefcase, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Image from "next/image"; // Image component import karna zaroori hai
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,52 +79,112 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
+          {/* ENHANCED LOGO WITH ANIMATIONS */}
           <motion.div
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex items-center space-x-3 cursor-pointer group"
             onClick={() => scrollToSection("home")}
             whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {/* === LOGO KI SIZE YAHAN BADI KI GAYI HAI === */}
-            <Image
-              src="/p1.png" // Aapke logo ka path
-              alt="Portfolio Logo"
-              width={200} // Pehle 40 tha
-              height={100} // Pehle 40 tha
-              priority
-              className="rounded-lg"
-            />
-            {/* === BADLAV YAHAN KHATAM HUA === */}
+            <motion.div
+              className="relative"
+              animate={{
+                rotate: [0, 5, 0, -5, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              {/* Glow effect behind logo */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg blur-md opacity-0 group-hover:opacity-50"
+                animate={{
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
 
-            {/* <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-teal-400 bg-clip-text text-transparent hidden sm:block">
-              Vijay Maurya
-            </span> */}
+              <Image
+                src="/p1.png"
+                alt="Portfolio Logo"
+                width={200}
+                height={100}
+                priority
+                className="rounded-lg relative z-10 group-hover:brightness-110 transition-all duration-300"
+              />
+            </motion.div>
           </motion.div>
 
+          {/* DESKTOP NAVIGATION WITH ENHANCED ANIMATIONS */}
           <div className="hidden md:flex items-center space-x-2">
-            {navItems.map((item) => (
-              <Button
+            {navItems.map((item, index) => (
+              <motion.div
                 key={item.id}
-                variant="ghost"
-                onClick={() => scrollToSection(item.id)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-300 flex items-center space-x-2 relative ${
-                  activeSection === item.id
-                    ? "text-white"
-                    : "text-gray-400 hover:text-white"
-                }`}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
               >
-                {activeSection === item.id && (
+                <Button
+                  variant="ghost"
+                  onClick={() => scrollToSection(item.id)}
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-2 relative group ${
+                    activeSection === item.id
+                      ? "text-white"
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  {activeSection === item.id && (
+                    <motion.div
+                      layoutId="active-nav-item"
+                      className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-lg"
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+
+                  {/* Icon with hover animation */}
+                  <motion.span
+                    className="relative z-10"
+                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {item.icon}
+                  </motion.span>
+
+                  <span className="relative z-10">{item.label}</span>
+
+                  {/* Hover underline */}
                   <motion.div
-                    layoutId="active-nav-item"
-                    className="absolute inset-0 bg-white/10 rounded-lg"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-400 to-cyan-400"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
                   />
-                )}
-                <span className="relative z-10">{item.icon}</span>
-                <span className="relative z-10">{item.label}</span>
-              </Button>
+
+                  {/* Active indicator dot */}
+                  {activeSection === item.id && (
+                    <motion.div
+                      className="absolute -top-1 left-1/2 w-1 h-1 bg-cyan-400 rounded-full"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: [0, 1.5, 1] }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  )}
+                </Button>
+              </motion.div>
             ))}
           </div>
 
+          {/* MOBILE MENU BUTTON */}
           <div className="md:hidden">
             <Button
               variant="ghost"
@@ -145,6 +207,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
