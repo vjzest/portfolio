@@ -105,8 +105,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      // Change 1: px-2 kar diya mobile ke liye (pahle px-4 tha) taaki width full mile
-      className="py-16 md:py-24 px-2 sm:px-6 bg-slate-900 text-white"
+      className="py-16 md:py-24 -[px-3] sm:px-1 bg-slate-900 text-white"
     >
       <div className="container mx-auto max-w-7xl">
         <motion.div
