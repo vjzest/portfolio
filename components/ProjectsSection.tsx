@@ -9,7 +9,7 @@ export default function ProjectsSection() {
     {
       title: "HousePlansfiles",
       description:
-        "The HousePlansfiles website offers a vast collection of architectural house plans. Built with React and Node.js, it features a user-friendly interface and integrates with Contentful CMS for dynamic content management.",
+        "The HousePlansfiles website offers a vast collection of architectural house plans. Built with React and Node.js, it features a user-friendly interface.",
       image: "/houseplansfiles.png",
       tech: ["React", "Node.js", "Express.js", "Contentful CMS"],
       github: "https://github.com/vjzest/ArchitectFrontend",
@@ -18,7 +18,7 @@ export default function ProjectsSection() {
     {
       title: "Rare Diamonds Marketplace",
       description:
-        "A premium online marketplace for buying and selling rare diamonds. Developed using React and Node.js, it incorporates Contentful CMS for seamless content updates and management.",
+        "A premium online marketplace for buying and selling rare diamonds. Developed using React and Node.js with Contentful CMS.",
       image: "/Rarediamond.png",
       tech: ["NextJs", "Node.js", "Express.js", "Contentful CMS"],
       github: "https://github.com/vjzest/CraticFrontend",
@@ -27,63 +27,63 @@ export default function ProjectsSection() {
     {
       title: "Property Deals Platform",
       description:
-        "A comprehensive platform for real estate transactions, allowing users to explore and manage property deals. Built with Next.js and Node.js, it leverages Contentful CMS for efficient content handling.",
+        "A comprehensive platform for real estate transactions, allowing users to explore and manage property deals efficiently.",
       image: "/property.png",
       tech: ["NextJs", "Node.js", "Express.js", "Contentful CMS"],
       github: "https://github.com/vijay-cmtai/investorFrontend",
       demo: "https://investordeaa.vercel.app",
     },
     {
-      title: "Jwelen E-commerce Platform",
+      title: "Jwelen E-commerce",
       description:
-        "An elegant e-commerce website specializing in jewelry sales. Developed with Next.js and Node.js, it features a sleek design and utilizes Contentful CMS for dynamic product management.",
+        "An elegant e-commerce website specializing in jewelry sales. Features a sleek design and dynamic product management.",
       image: "/jwelen.png",
       tech: ["NextJs", "Node.js", "Express.js", "Contentful CMS"],
       github: "https://github.com/vijay-cmtai/Jewelen",
       demo: "https://jewelencmtai.vercel.app",
     },
     {
-      title: "E-commerce for Chia Seeds",
+      title: "Chia Seeds Store",
       description:
-        "A niche e-commerce platform dedicated to selling chia seeds, built with a modern tech stack. Features product pages, a shopping cart, and uses Cloudinary for image management.",
+        "A niche e-commerce platform dedicated to selling chia seeds. Features product pages, cart, and Cloudinary integration.",
       image: "/ecommerce.png",
-      tech: ["React", "Node.js", "Express.js", "MongoDB", "Cloudinary"],
+      tech: ["React", "Node.js", "MongoDB", "Cloudinary"],
       github: "https://github.com/vijay-cmtai/chiaseedsfront",
       demo: "https://www.naraaglobal.com",
     },
     {
-      title: "Madrid Pharmaceutical Website",
+      title: "Madrid Pharma",
       description:
-        "A professional and informative website for a pharmaceutical company, designed to showcase their products, services, and corporate information to a global audience.",
+        "A professional website for a pharmaceutical company, showcasing products and corporate information globally.",
       image: "/madrid.png",
       tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
       github: "https://github.com/vijay-cmtai/MadridPharma1.1",
       demo: "https://www.madridpharma.com",
     },
     {
-      title: "TeacherJob - Job Portal",
+      title: "TeacherJob Portal",
       description:
-        "A dedicated job portal connecting teachers with educational institutions. Built with the MERN stack and utilizes AWS S3 for efficient resume and document storage.",
+        "A dedicated job portal connecting teachers with institutions. Utilizes AWS S3 for resume storage.",
       image: "/Teacherjob.png",
-      tech: ["React", "Node.js", "MongoDB", "AWS S3", "Express.js"],
+      tech: ["React", "Node.js", "MongoDB", "AWS S3"],
       github: "https://github.com/vijay-cmtai/TeacherConnect2",
       demo: "https://www.teacherjob.in",
     },
     {
-      title: "Propcid - Real Estate Marketplace",
+      title: "Propcid Real Estate",
       description:
-        "A comprehensive platform for buying and selling properties. It features advanced search, property listings, and uses a Node.js backend with Firebase for storage.",
+        "Platform for buying and selling properties with advanced search. Backend powered by Node.js and Firebase.",
       image: "/propcid.png",
-      tech: ["React", "Next.js", "Node.js", "Express.js", "Firebase"],
+      tech: ["React", "Next.js", "Node.js", "Firebase"],
       github: "https://github.com/vjzest/PropCIDFrontend",
       demo: "https://propcid.com",
     },
     {
       title: "Jharkhand IT Solutions",
       description:
-        "The official company website for a Jharkhand-based IT solutions provider, powered by a custom Node.js backend and a headless CMS for dynamic content.",
+        "Official company website providing IT solutions, powered by a custom Node.js backend and headless CMS.",
       image: "/jharkhand.png",
-      tech: ["React", "Next.js", "Node.js", "Express.js", "Contentful CMS"],
+      tech: ["React", "Node.js", "Express.js", "Contentful CMS"],
       github: "https://github.com/vijay-cmtai/Jharkhand_IT_Sol_Front3",
       demo: "https://jharkhand-it-sol-front3.vercel.app",
     },
@@ -105,7 +105,8 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="py-16 md:py-24 px-4 bg-slate-900 text-white"
+      // Change 1: px-2 kar diya mobile ke liye (pahle px-4 tha) taaki width full mile
+      className="py-16 md:py-24 px-2 sm:px-6 bg-slate-900 text-white"
     >
       <div className="container mx-auto max-w-7xl">
         <motion.div
@@ -126,60 +127,62 @@ export default function ProjectsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          // Change 2: w-full lagaya hai taaki grid full width le
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full"
         >
           {projects.map((project) => (
             <motion.div
               key={project.title}
               variants={itemVariants}
+              // Change 3: Mobile pe card full width feel dega
               className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:border-white/20 transition-all duration-300 flex flex-col h-full group"
             >
-              {/* Image Container - REDUCED HEIGHT FOR MOBILE */}
-              <div className="relative h-40 sm:h-48 md:h-56 w-full overflow-hidden">
+              {/* Image Container */}
+              <div className="relative h-48 sm:h-52 w-full overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110 object-top"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-60" />
               </div>
 
-              {/* Content - Reduced padding on mobile */}
+              {/* Content */}
               <div className="p-4 sm:p-5 flex flex-col flex-grow">
                 {/* Title */}
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 line-clamp-1">
+                <h3 className="text-xl font-bold text-white mb-2 line-clamp-1">
                   {project.title}
                 </h3>
 
-                {/* Description - 2 lines on mobile, 4 on desktop */}
-                <p className="text-gray-300 mb-4 text-sm leading-relaxed flex-grow line-clamp-2 sm:line-clamp-4">
+                {/* Description */}
+                <p className="text-gray-300 mb-4 text-sm leading-relaxed flex-grow line-clamp-3">
                   {project.description}
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-teal-500/10 text-teal-300 text-[10px] sm:text-xs font-medium rounded-md border border-teal-500/20"
+                      className="px-2.5 py-1 bg-teal-500/10 text-teal-300 text-xs font-medium rounded-md border border-teal-500/20"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.tech.length > 4 && (
-                    <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 bg-gray-700/50 text-gray-300 text-[10px] sm:text-xs font-medium rounded-md">
+                    <span className="px-2.5 py-1 bg-gray-700/50 text-gray-300 text-xs font-medium rounded-md">
                       +{project.tech.length - 4}
                     </span>
                   )}
                 </div>
 
-                {/* Buttons - SIDE BY SIDE ON MOBILE TOO */}
+                {/* Buttons - Mobile pe full width buttons */}
                 <div className="flex flex-row gap-3 mt-auto">
                   <Button
                     size="sm"
-                    className="flex-1 bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 h-9 sm:h-10 text-xs sm:text-sm"
+                    className="flex-1 bg-gray-800 hover:bg-gray-700 text-white border border-gray-600 h-10"
                     asChild
                   >
                     <a
@@ -187,12 +190,12 @@ export default function ProjectsSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Github className="h-3.5 w-3.5 mr-2" /> Code
+                      <Github className="h-4 w-4 mr-2" /> Code
                     </a>
                   </Button>
                   <Button
                     size="sm"
-                    className="flex-1 bg-gradient-to-r from-purple-600 to-teal-500 hover:opacity-90 text-white border-0 h-9 sm:h-10 text-xs sm:text-sm"
+                    className="flex-1 bg-gradient-to-r from-purple-600 to-teal-500 hover:opacity-90 text-white border-0 h-10"
                     asChild
                   >
                     <a
@@ -200,7 +203,7 @@ export default function ProjectsSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <ExternalLink className="h-3.5 w-3.5 mr-2" /> Demo
+                      <ExternalLink className="h-4 w-4 mr-2" /> Demo
                     </a>
                   </Button>
                 </div>
