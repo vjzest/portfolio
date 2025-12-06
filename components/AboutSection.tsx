@@ -1,4 +1,3 @@
-// src/app/components/AboutSection.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -37,27 +36,20 @@ export default function AboutSection() {
   const stats = [
     {
       number: "3+",
-      label: "Years Experience",
+      label: "Years Exp.",
       icon: <Briefcase className="h-5 w-5" />,
     },
-    {
-      number: "50+",
-      label: "Projects Done",
-      icon: <Target className="h-5 w-5" />,
-    },
+    { number: "50+", label: "Projects", icon: <Target className="h-5 w-5" /> },
     {
       number: "100%",
-      label: "Client Satisfaction",
+      label: "Satisfaction",
       icon: <TrendingUp className="h-5 w-5" />,
     },
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
   };
 
   const itemVariants = {
@@ -68,12 +60,12 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-32 px-4 bg-[#0a0f1e] text-white relative overflow-hidden"
+      className="py-20 md:py-32 px-4 bg-[#0a0f1e] text-white relative overflow-hidden"
     >
-      {/* Subtle background */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+      {/* Background blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 -left-20 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -right-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto relative z-10 max-w-7xl">
@@ -82,222 +74,166 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4"
-          >
-            <span className="text-sm font-semibold text-indigo-400 tracking-wider uppercase">
-              Get to know me
-            </span>
-          </motion.div>
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <span className="text-sm font-bold text-indigo-400 tracking-widest uppercase mb-2 block">
+            Get to know me
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
             About Me
           </h2>
-
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
             Passionate developer crafting digital experiences with modern
-            technologies
+            technologies.
           </p>
         </motion.div>
 
-        {/* Stats Section */}
+        {/* Stats Section - Grid fixed for mobile */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-16"
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -5 }}
-              className="bg-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:border-indigo-500/30 transition-all duration-300"
+              className="bg-white/5 border border-white/10 rounded-xl p-6 text-center hover:border-indigo-500/30 transition-all"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 mb-4">
-                <span className="text-indigo-400">{stat.icon}</span>
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 mb-3">
+                {stat.icon}
               </div>
-
-              <motion.h3
-                className="text-4xl font-bold text-white mb-2"
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+              <h3 className="text-3xl font-bold text-white mb-1">
                 {stat.number}
-              </motion.h3>
+              </h3>
               <p className="text-gray-400 text-sm">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Main Content */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid lg:grid-cols-5 gap-12 items-start"
-        >
-          {/* Personal Info */}
-          <motion.div variants={itemVariants} className="lg:col-span-2">
-            <div className="bg-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300">
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
-                Hello! I'm Vijay Maurya
-              </h3>
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-5 gap-10 items-start">
+          {/* Bio Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8"
+          >
+            <h3 className="text-2xl font-bold mb-4 text-white">
+              Hello! I'm Vijay Maurya
+            </h3>
+            <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-base">
+              I'm a passionate Full Stack Developer with over 3 years of
+              experience in creating dynamic and responsive web applications. I
+              love turning complex problems into simple solutions.
+            </p>
 
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                I'm a passionate Full Stack Developer with over 3 years of
-                experience in creating dynamic and responsive web applications.
-                I love turning complex problems into simple, beautiful, and
-                intuitive solutions.
-              </p>
-
-              {/* Info badges */}
-              <div className="space-y-3 mb-8">
-                <motion.div
-                  className="flex items-center gap-3 text-gray-300"
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
-                    <MapPin className="h-4 w-4 text-indigo-400" />
-                  </div>
-                  <span>Noida, India</span>
-                </motion.div>
-
-                <motion.div
-                  className="flex items-center gap-3 text-gray-300"
-                  whileHover={{ x: 5 }}
-                >
-                  <div className="p-2 rounded-lg bg-green-500/10 border border-green-500/20">
-                    <Calendar className="h-4 w-4 text-green-400" />
-                  </div>
-                  <span>Available for work</span>
-                </motion.div>
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-3 text-gray-300 text-sm md:text-base">
+                <MapPin className="h-5 w-5 text-indigo-400 flex-shrink-0" />
+                <span>Noida, India</span>
               </div>
-
-              {/* Download button */}
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Button
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-medium shadow-lg border-0"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Resume
-                </Button>
-              </motion.div>
+              <div className="flex items-center gap-3 text-gray-300 text-sm md:text-base">
+                <Calendar className="h-5 w-5 text-green-400 flex-shrink-0" />
+                <span>Available for work</span>
+              </div>
             </div>
+
+            {/* 👇 UPDATED BUTTON CODE FOR DOWNLOAD 👇 */}
+            <Button
+              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium h-12"
+              asChild
+            >
+              <a
+                href="/VijayResumeBest.pdf"
+                download="Vijay_Maurya_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="mr-2 h-5 w-5" /> Download Resume
+              </a>
+            </Button>
+            {/* 👆 UPDATED BUTTON CODE 👆 */}
           </motion.div>
 
-          {/* Timeline */}
+          {/* Timeline Section */}
           <motion.div
-            variants={containerVariants}
-            className="lg:col-span-3 space-y-6 relative"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-3 space-y-8 relative pl-2 md:pl-0"
           >
-            {/* Timeline line */}
-            <div className="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-indigo-500/50 via-blue-500/50 to-transparent" />
+            {/* Vertical Line */}
+            <div className="absolute left-[22px] md:left-[27px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-indigo-500/50 to-transparent" />
 
-            {/* Timeline items */}
             {timeline.map((item, index) => (
-              <motion.div
-                key={index}
-                className="pl-16 relative"
-                variants={itemVariants}
-              >
+              <div key={index} className="pl-14 relative group">
                 {/* Dot */}
-                <motion.div
-                  className="absolute left-6 top-6 -translate-x-1/2"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2, type: "spring" }}
-                >
-                  <div className="w-3 h-3 bg-indigo-500 rounded-full border-4 border-[#0a0f1e] ring-2 ring-indigo-500/20" />
-                </motion.div>
+                <div className="absolute left-[13px] md:left-[18px] top-5 -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-[#0a0f1e] z-10 group-hover:scale-125 transition-transform" />
 
-                {/* Card */}
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  className="bg-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-indigo-500/30 transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20">
-                      <span className="text-indigo-400">{item.icon}</span>
+                <div className="bg-white/5 border border-white/10 rounded-xl p-5 hover:border-indigo-500/30 transition-colors">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-3">
+                    <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 shrink-0">
+                      {item.icon}
                     </div>
-                    <div className="flex-1">
-                      <p className="text-indigo-400 font-medium text-sm mb-2">
+                    <div>
+                      <span className="text-indigo-400 text-xs font-bold uppercase tracking-wider block mb-1">
                         {item.year}
-                      </p>
-                      <h4 className="font-bold text-xl text-white mb-1">
+                      </span>
+                      <h4 className="font-bold text-lg text-white leading-tight">
                         {item.title}
                       </h4>
-                      <p className="text-gray-400 font-medium text-sm">
-                        {item.company}
-                      </p>
                     </div>
                   </div>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm font-medium mb-1">
+                    {item.company}
+                  </p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
                     {item.description}
                   </p>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             ))}
           </motion.div>
-        </motion.div>
+        </div>
 
-        {/* Bottom Section */}
+        {/* Why Work With Me */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-20 bg-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-12"
+          className="mt-16 bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-2xl p-6 md:p-10"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white text-center">
+          <h3 className="text-2xl font-bold mb-8 text-white text-center">
             Why Work With Me?
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
               {
                 title: "Clean Code",
-                desc: "Writing maintainable, scalable, and well-documented code",
+                desc: "Maintainable & scalable architecture.",
               },
               {
                 title: "Fast Delivery",
-                desc: "Meeting deadlines without compromising on quality",
+                desc: "Deadlines met without quality loss.",
               },
               {
                 title: "Client Focus",
-                desc: "Understanding requirements and delivering beyond expectations",
+                desc: "Exceeding expectations every time.",
               },
             ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="text-center"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 mb-4">
-                  <div className="w-2 h-2 bg-indigo-400 rounded-full" />
-                </div>
+              <div key={idx}>
+                <div className="w-2 h-2 bg-indigo-400 rounded-full mx-auto mb-3" />
                 <h4 className="text-lg font-semibold text-white mb-2">
                   {item.title}
                 </h4>
-                <p className="text-gray-400 text-sm">{item.desc}</p>
-              </motion.div>
+                <p className="text-gray-400 text-sm max-w-xs mx-auto">
+                  {item.desc}
+                </p>
+              </div>
             ))}
           </div>
         </motion.div>

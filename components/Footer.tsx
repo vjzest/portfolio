@@ -1,10 +1,8 @@
-// src/app/components/Footer.tsx
 "use client";
 
-import { Heart, Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Custom LeetCode Icon Component
 const LeetCodeIcon = ({ className }: { className?: string }) => (
   <svg
     role="img"
@@ -19,7 +17,7 @@ const LeetCodeIcon = ({ className }: { className?: string }) => (
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
     {
       icon: <Github className="h-5 w-5" />,
@@ -31,37 +29,35 @@ export default function Footer() {
       url: "https://www.linkedin.com/in/vijay-082028290/",
       name: "LinkedIn",
     },
-    // Added LeetCode Profile
     {
       icon: <LeetCodeIcon className="h-5 w-5" />,
-      url: "https://leetcode.com/u/vjzest9569/", // Maine github ke username se match karke URL daal diya hai. Agar alag hai to change kar lena.
+      url: "https://leetcode.com/u/vjzest9569/",
       name: "LeetCode",
     },
   ];
 
   return (
     <motion.footer
-      className="bg-slate-900 border-t border-white/10 text-white py-12 px-4"
+      className="bg-[#0f172a] border-t border-white/5 py-8 md:py-12 px-4"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 1 }}
+      viewport={{ once: true }}
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <div className="mb-6 md:mb-0">
-            <p className="text-gray-300">
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-6">
+          <div className="text-center md:text-left">
+            <p className="text-gray-400 text-sm">
               © {currentYear} Vijay Maurya. All rights reserved.
             </p>
           </div>
-          <div className="flex space-x-6">
+          <div className="flex space-x-8">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-110 transition-all"
+                className="text-gray-400 hover:text-white hover:scale-110 transition-all p-2"
                 aria-label={social.name}
               >
                 {social.icon}
@@ -69,9 +65,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        {/* <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-500 text-sm">
-          Built with Next.js, Tailwind CSS, and Framer Motion
-        </div> */}
       </div>
     </motion.footer>
   );
