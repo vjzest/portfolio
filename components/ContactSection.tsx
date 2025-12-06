@@ -71,7 +71,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-20 md:py-24 px-4 bg-slate-900 text-white"
+      className="py-20 md:py-24 px-2 md:px-6 bg-slate-900 text-white"
     >
       <div className="container mx-auto max-w-6xl">
         <motion.div
